@@ -1,9 +1,20 @@
 package com.leanrningproject.course.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tb_user")//Para não conflitar com a palavra User do banco de dados.
 public class User implements Serializable {
+
+    @Id //Para dizer que essa será a primary Key
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Para auto incrementar no DB
     private Long id;
     private String name;
     private String email;
