@@ -1,5 +1,6 @@
 package com.leanrningproject.course.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -38,7 +39,7 @@ public class User implements Serializable {
     public User() {
 
     }
-
+    @JsonIgnore
     @OneToMany(mappedBy = "client")
     public List<Order> getOrders() {
         return orders;
