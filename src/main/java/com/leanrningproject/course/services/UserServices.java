@@ -2,6 +2,7 @@ package com.leanrningproject.course.services;
 
 import com.leanrningproject.course.entities.User;
 import com.leanrningproject.course.repositories.UserRepository;
+import com.leanrningproject.course.services.exceptions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,7 @@ public class UserServices {
     }
     public User findById(Long id) {
         Optional<User> obj = repository.findById(id);
-        return obj.get();
+        return obj.orElseThrow(() -> new ResourceNotFoundException(id));
     }
     public User insert(User obj) {
        return repository.save(obj);
